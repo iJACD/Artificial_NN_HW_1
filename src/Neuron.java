@@ -7,4 +7,5 @@ public class Neuron {
 	public static final double LEARNING_RATE = 0.5;
 	String test = "Test Git";
 	//test Git
+	//one more test
 }
