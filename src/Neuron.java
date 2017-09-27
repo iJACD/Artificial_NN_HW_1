@@ -9,14 +9,22 @@ public class Neuron {
 	
 	public double calcWeightedSum(int[] data, double[] weights){
 		double weightedSum = 0;
+		for(int x = 0;x<data.length;x++){
+			weightedSum += data[x]*weights[x]; 
+		}
 		return weightedSum;
 	}
 	
-	public int applyActivationFunc(double sigmoid){
-		return 0;
+	public double applySigmoidFunc(double weightedSum){
+		double result = (1/(1+Math.pow(Math.E, -weightedSum)));
+		return result;
 	}
 	
-	public double[] adjustWeight(int[] data, double weights, double error){
-		return null;
+	public double[] adjustWeight(int[] data, double[] weights, double error){
+		double adjustedWeights[] = new double[weights.length];
+		for(int x=0; x<weights.length; x++){
+			adjustedWeights[x] = LEARNING_RATE*error*data[x] + weights[x];
+		}
+		return adjustedWeights;
 	}
 }
