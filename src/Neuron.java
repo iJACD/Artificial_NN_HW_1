@@ -1,10 +1,11 @@
 
-public class Neuron {
-	public static final int[][][] andData = {{{0,0},{0}},
+public class Neuron implements samples{
+	/*public static final int[][][] andData = {{{0,0},{0}},
 											 {{0,1},{0}},
 											 {{1,0},{0}},
-											 {{1,1},{1}}};
-	public static final double LEARNING_RATE = 0.05;
+											 {{1,1},{1}}};*/
+	public static final double[][] inLayer = inputs;
+	//public static final double LEARNING_RATE = 0.1;
 	public static final double[] INITIAL_WEIGHTS = {Math.random(), Math.random()};
 	
 	public double calcWeightedSum(int[] data, double[] weights){
@@ -20,10 +21,17 @@ public class Neuron {
 		return result;
 	}
 	
+	public int applyActivationFunc(double weightedSum){
+		int result = 0;
+		if(weightedSum > 1)
+			result = 1;
+		return result;
+	}
+	
 	public double[] adjustWeight(int[] data, double[] weights, double error){
 		double adjustedWeights[] = new double[weights.length];
 		for(int x=0; x<weights.length; x++){
-			adjustedWeights[x] = LEARNING_RATE*error*data[x] + weights[x];
+			//adjustedWeights[x] = LEARNING_RATE*error*data[x] + weights[x];
 		}
 		return adjustedWeights;
 	}
